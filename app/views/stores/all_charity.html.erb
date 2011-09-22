@@ -1,18 +1,17 @@
-<h1>Listing Charities</h1>
-<div style="padding-left: 50px;">
-  <table >
-
-
-    <% @charities.each do |club| %>
-      <tr>
-        <th>Logo</th>
-        <td><%=  club.organizationname  %></td>
-        <td><%= club.sport %></td>
-        <td><%= club.state  %></td>
-      </tr>
-    <% end %>
-  </table>
+<h2>Listing Charities</h2><br/>
+<div class="FL" style="width:235px;"></div>
+<div class="FL" style="width:765px;">
+   <% @charities.each do |club| %>
+  <div style="margin-left:20px;">
+    <div class="FL list_text" style="width:150px;">(Logo)</div>
+    <div class="FL list_text" style="width:150px;"><%=  club.organizationname  %></div>
+    <div class="FL list_text" style="width:150px;"><%= club.sport %></div>
+    <div class="FL list_text" style="width:150px;"><%= club.state  %></div>
+    <div class="clear"></div>
+  </div>
+  <% end %>
+  
+  <div>&nbsp;</div>
 </div>
-
-
-
+<div class="clear"></div>
+<div>&nbsp;</div>

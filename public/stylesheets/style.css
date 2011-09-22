@@ -314,3 +314,18 @@ textarea.LV_invalid_field:active {
 
 }
 
+.list_text{
+    font: bold 14px/16px "Verdana", Geneva, sans-serif;
+    color:#666;
+
+}
+.gd a:link,.gd a:visited, .gd a:active{
+    font: normal 12px/14px  "Verdana", Geneva, sans-serif;
+    color:  blue;
+    border-bottom: 1px solid blue;
+
+}
+.gd a:hover{
+    color: #000;
+    border-bottom: 1px solid #000;
+}
