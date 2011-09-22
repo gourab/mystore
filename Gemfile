@@ -8,14 +8,14 @@ gem 'rails', '3.0.10'
 gem 'mysql2', '~> 0.2.11'
 gem "paperclip", "~> 2.3"
 gem 'rake', "0.9.2"
-group :test, :development do
+#group :test, :development do
 
-gem 'rspec-rails'
-gem 'cucumber-rails'
-gem 'capybara'
-gem 'database_cleaner'
-gem 'launchy'
-end	
+#gem 'rspec-rails'
+#gem 'cucumber-rails'
+#gem 'capybara'
+#gem 'database_cleaner'
+#gem 'launchy'
+#end	
 
 # Use unicorn as the web server
 # gem 'unicorn'
