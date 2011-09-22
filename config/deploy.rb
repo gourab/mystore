@@ -33,7 +33,7 @@ namespace :deploy do
   end
 end
 after :deploy, "deploy:restart"
-after "deploy:symlink"#, "deploy:update_crontab"
+#after "deploy:symlink"#, "deploy:update_crontab"
 #namespace :deploy do
 #  desc "Update the crontab file"
 #  task :update_crontab, :roles => :db do
