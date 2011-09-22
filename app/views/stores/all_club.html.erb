@@ -1,0 +1,17 @@
+<h1>Listing Club</h1>
+<div style="padding-left: 50px;">
+<table >
+ <% @clubs.each do |club| %>
+  <tr>
+    <th>Logo</th>
+    <td><%= club.organizationname %></td>
+    <td><%= club.sport %></td>
+    <td><%= club.state  %></td>
+
+  </tr>
+<% end %>
+</table>
+</div>
+
+
+

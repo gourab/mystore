@@ -1,0 +1,79 @@
+<div class="main_wrap">
+  <div class="FL" style="width:235px;">Category</div>
+  <div class="FL" style="width:765px;">
+    <div class="FL" style="width: 300px;">
+<% form_tag add_to_cart_path(:item_id => @item.id) do %>
+
+      <div class="tn3gallery">
+        <%= flash[notice] %>
+      
+          <% item_hash = "item_#{@item.id}".to_sym %>
+  <%#= render :partial => "attachment", :collection => @item.assets %>
+          <% @item.assets.each do |asset| %>
+
+
+            <a href='<%=asset.url %>'> <%= image_tag (asset.url,:size => "150x160")  %></a>
+
+
+          <% end %>
+        </div>
+      </div>
+      <div class="FL" style="width:400px; padding-left: 10px;">
+        <b>Name:</b>
+        <%= @item.title %>
+        <p>
+          <b>Description:</b>
+          <%= @item.description %>
+        </p>
+        <p>
+          <b>Price:</b>
+          <%= @item.price %>
+        </p>
+        <p>
+          <b>Size:</b>
+          <%= @item.size %>
+        </p>
+        <p>
+          <b>Club/Charity:</b>
+          <%= Store.find(@item.store_id).organizationname %>
+        </p>
+        <p>
+          <b>Quantity:</b>
+          <%= text_field item_hash , :quantity , :value=>1 ,:size => 3 %>
+        </p>
+        <p>
+
+          <%= hidden_field item_hash , :item_id , :value => @item.id %>
+        </p>
+        <br/>
+        <%= submit_tag "add to cart" %>
+      <% end %>
+    </div>
+    <div class="clear">&nbsp;</div>
+    <div style="padding-left: 25px;font-size: 20px;color: #FF0000;">Other Product From <%= Store.find(@item.store_id).organizationname %> </div>
+    <div class="clear">&nbsp;</div>
+    <div class="FL" style="width:765px;">
+      <div class="listing">
+        <ul>
+          <%= temp_item="" %>
+          <% @temp_items=Item.find(:all , :conditions => ["store_id =?",@item.store_id]) %>
+          <% @temp_items.each do |item| %>
+            <% if @item.title!=item.title %>
+              <% item.assets.each do |asset| %>
+                <% if temp_item!=item.title %>
+                  <li> <%= image_tag (asset.url,:size => "138x152")  %>
+                    <h3><%= item.title   %></h3>
+                    <div id="blue"><%= item.description   %></div>
+                    <div class="cart_price"><%=  link_to "Show", show_item_path(:id => item.id) , :class => "adcart" %></div>
+                  </li>
+                  <% temp_item=item.title %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

@@ -1,0 +1,41 @@
+<div style="padding-left: 700px;"><%= link_to "<< Continue Shopping", root_path  %>&nbsp;&nbsp;&nbsp&nbsp;&nbsp;<%= link_to "<< Checkout" , new_address_path  %>
+  &nbsp;&nbsp;&nbsp&nbsp;&nbsp;<%= link_to "<< Empty Cart" , empty_cart_path , :confirm=>"Are you want to empty the your cart?" %></div>
+<div>&nbsp;</div>
+<div style="padding:0 50px 0 50px;">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr style="color: #000000; font-size:14px;">
+      <td style="padding:4px 8px 4px 8px;text-align:center;">Item Name</td>
+      <td style="padding:4px 8px 4px 8px;text-align:center;">Quantity</td>
+      <td style="padding:4px 8px 4px 8px;text-align:center;">Price</td>
+      <td style="padding:4px 8px 4px 8px;text-align:center;">Total Price</td>
+      <td style="padding:4px 8px 4px 8px;text-align:center;" colspan="2">Action</td>
+    </tr>
+    <% if !@cart.blank? %>
+      <% $sum = 0 %>
+      <% @cart.each do |a| %>
+        <% item = Item.find_by_id(a[:item_id].to_i) %>
+        <tr style="color: #652803; font-size:14px;">
+          <% if a[:quantity] %>
+            <td style="text-align:center;"><%= item.title %></td>
+            <% form_tag update_cart_path  do %>
+              <td style="text-align:center;"><%= text_field :cart , :quantity , :value => a[:quantity] , :size => 3 %>
+                <%= hidden_field :cart , :id , :value => item.id %>
+              </td>   
+              <td style="text-align:center;">$<%= item.price %></td>
+              <td style="text-align:center;">$<%= $total = a[:quantity].to_i * item.price.to_f %></td>
+              <% $sum = $sum.to_f + $total.to_f %>
+               
+              <td style="text-align:center;"><%= link_to "Remove",remove_cart_path(:id =>item.id), :confirm=>"Are you sure?" %></td>
+              <td><%= submit_tag "update" %></td>
+            <% end %>
+          <% end %>
+        </tr>
+      <%end%>
+      <tr style="color: #652803; font-size:14px;">
+        <%#*<td style="text-align:right;" colspan="3"><%= $sum %>
+      </tr>
+    <%end%>
+  </table>
+
+  <div>&nbsp;</div>
+</div>

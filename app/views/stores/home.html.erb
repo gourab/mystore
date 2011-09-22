@@ -1,0 +1,32 @@
+<div class="main_wrap">
+  <div class="FL" style="width:235px;">Category</div>
+  <div class="FL" style="width:765px;">
+    <div style="margin-left:20px;">
+      <div class="FL" style="width:300px;"><%= link_to "List Of All Charity" ,all_charity_path  %></div>
+      <div class="FL"><%= link_to "List Of All Club" ,all_club_path  %></div>
+      <div class="clear"></div>
+    </div>
+    <div>&nbsp;</div>
+    <div class="listing">
+      <ul>
+        <%= temp_item="" %>
+        <% @items.each do |item| %>
+          <% item.assets.each do |asset| %>
+
+            <% if temp_item!=item.title %>
+              <li> <%= image_tag (asset.url,:size => "138x152")  %>
+                <h3><%= item.title   %></h3>
+                <div><%= link_to  Store.find(item.store_id).organizationname , show_store_item_path(:id=>item.store_id )   %></div>
+                <div class="cart_price"><%=  link_to "Show", show_item_path(:id => item.id) , :class => "adcart" %></div>
+              </li>
+              <% temp_item=item.title %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <div>&nbsp;</div>
+</div>
+

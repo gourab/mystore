@@ -1,0 +1,23 @@
+<h1>Listing Items</h1>
+<div style="padding-left: 50px;">
+<table border ="1" >
+  <tr>
+    <th>Title</th>
+    <th>Price</th>
+    <th>Action</th>
+    
+  </tr>
+
+<% @items.each do |item| %>
+  <tr>
+    <td><%= item.title %></td>
+    <td><%= item.price %></td>
+    <td><%= link_to "show" , item  %></td>
+       
+  </tr>
+<% end %>
+</table>
+</div>
+<br />
+
+

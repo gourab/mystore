@@ -1,0 +1,8 @@
+<% if !attachment.id.nil? %>
+<div class="show">
+  <ul ><li>
+<a href='<%=attachment.url %>'> <%= image_tag (attachment.url,:size => "100x125")  %></a>
+</li></ul>
+</div>
+
+<% end %>

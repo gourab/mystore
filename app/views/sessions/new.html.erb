@@ -1,0 +1,37 @@
+
+<div class="body_border">
+<div style="padding:20px 0 0 30px;">
+<div><h2>LOGIN</h2></div>
+<div><%= flash[:notice] || flash.now[:error] %></div>
+<div style=" border-bottom:1px solid #999; margin:4px 20px 0 0"></div>
+<p>&nbsp;</p>
+<div class="log_bg">
+<div style="padding:28px 0 0 25px;"><h3>Please Sign In</h3></div>
+<div style="padding:10px 0 0 25px">
+<div>If you have an account with us, please log in.</div>
+<p>&nbsp;</p>
+<%= form_tag session_path do -%>
+<div class="FL text_aria"><%= label_tag 'login' %></div>
+<div class="FL text_aria"><%= text_field_tag 'login', @login %></div><br />
+<div class="clear"></div>
+<p>&nbsp;</p>
+<div class="FL text_aria"><%= label_tag 'password' %></div>
+<div class="FL text_aria"><%= password_field_tag 'password', nil %></div>
+<div class="clear"></div>
+<!-- Uncomment this if you want this functionality
+<p><%= label_tag 'remember_me', 'Remember me' %>
+<%= check_box_tag 'remember_me', '1', @remember_me %></p>
+-->
+<div  class="log_but" ><%= submit_tag 'Log in', :class=>"log_img"  %></div>
+<% end -%>
+</div>
+</div>
+<p>&nbsp;</p>
+
+
+<p>&nbsp;</p>
+</div>
+</div>
+
+
+

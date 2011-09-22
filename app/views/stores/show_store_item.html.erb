@@ -1,0 +1,60 @@
+<div class="main_wrap">
+  <div class="FL" style="width:235px;">Category</div>
+  <div class="FL" style="width:765px;">
+    <div class="FL" style="width: 200px;padding-left: 20px;">
+      <% if @store.assets.count==0 %>
+        <%= image_tag("../images/missing_profile.jpg", :size => "150x200") %>
+      <% else %>
+
+      <% end %>
+
+    </div>
+    <div class="FL" style="width:400px;">
+      <p >
+        <b>Organisation Name:</b>
+        <%= @store.organizationname %>
+      </p>
+      <p>
+        <b>First Name:</b>
+        <%= @store.firstname %>
+      </p>
+      <p>
+        <b>Last Name:</b>
+        <%= @store.lastname %>
+      </p>
+      <p>
+        <b>Address:</b>
+        <%= @store.address1 %> &nbsp;&nbsp;<%= @store.address2 %>
+      </p>
+      <p>
+        <b>Sport:</b>
+        <%= @store.sport %>
+      </p>
+    </div>
+    <div class="clear">&nbsp;</div>
+     <div style="padding-left: 25px;font-size: 20px;color: #FF0000;">List of Products From <%= @store.organizationname %> </div>
+    <div class="clear">&nbsp;</div>
+    <div class="FL" style="width: 765px;">
+      <div class="listing">
+        <ul>
+          <%= temp_item="" %>
+          <% @items.each do |item| %>
+            <% item.assets.each do |asset| %>
+              <% if temp_item!=item.title %>
+                <li > <%= image_tag (asset.url,:size => "138x152")  %>
+                  <h3><%= item.title   %></h3>
+                  <div><%= link_to  Store.find(item.store_id).organizationname , show_store_item_path(:id=>item.store_id )   %></div>
+                  <div class="cart_price"><%=  link_to "Show", show_item_path(:id => item.id) , :class => "adcart" %></div>
+                </li>
+                <% temp_item=item.title %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+
+
+</div>

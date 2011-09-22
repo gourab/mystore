@@ -1,0 +1,157 @@
+<div>&nbsp;</div>
+<div style="padding:0 40px 0 50px;">
+  <table width="100%" border="1" cellspacing="0" cellpadding="0">
+    <tr style="background:#B03A04;color: #fff; font-size:14px;">
+      <td style="padding:4px 8px 4px 8px;text-align:center;">Product Name</td>
+      <td style="padding:4px 8px 4px 8px;text-align:center;">Charity/Club</td>
+      <td style="padding:4px 8px 4px 8px;text-align:center;">Quantity</td>
+      <td style="padding:4px 8px 4px 8px;text-align:center;">Price</td>
+      <td style="padding:4px 8px 4px 8px;text-align:center;">Total Price</td>
+    </tr>
+    <% if !@order.lineitems.blank? %>
+      <% $sum = 0 %>
+      <% @order.lineitems.each do |lineitem| %>
+        <tr style="color: #652803; font-size:14px;">
+          <td style="padding:5px 0 2px 0;text-align:center;"><%= lineitem.item.title %></td>
+          <td style="padding:5px 0 2px 0;text-align:center;"><%= Store.find(lineitem.item.store_id).organizationname %></td>
+          <td style="text-align:center;"><%= lineitem.quantity %></td>
+          <td style="text-align:center;">$<%= lineitem.price %></td>
+          <td style="text-align:center;">$<%= $total = lineitem.quantity.to_i * lineitem.price.to_f %></td>
+          <% $sum = $sum.to_f + $total.to_f %>
+        </tr>
+      <%end%>
+    <%end%>
+  </table>
+  <div>&nbsp;</div>
+  <div>&nbsp;</div>
+  <div style="background:#B03A04;color: #fff; font-size:14px;margin:0 180px 0 600px;padding:4px 0 4px 20px;" >&nbsp;Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$<%= $sum %></div>
+  <div>&nbsp;</div>
+</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div style="padding:0 40px 0 50px;">
+  <table width="100%" border="1" cellspacing="0" cellpadding="0">
+    <tr style="background:#B03A04;color: #fff; font-size:14px;">
+      <td style="padding:4px 8px 4px 8px;text-align:center;">First Name</td>
+      <td style="padding:4px 8px 4px 8px;text-align:center;">Last Name</td>
+      <td style="padding:4px 8px 4px 8px;text-align:center;">Email</td>
+      <td style="padding:4px 8px 4px 8px;text-align:center;">Address1 :</td>
+      <td style="padding:4px 8px 4px 8px;text-align:center;">Address2</td>
+      <td style="padding:4px 8px 4px 8px;text-align:center;">City</td>
+      <td style="padding:4px 8px 4px 8px;text-align:center;">State</td>
+      <td style="padding:4px 8px 4px 8px;text-align:center;">Zip Code</td>
+      <td style="padding:4px 8px 4px 8px;text-align:center;">Sale Tax</td>
+      <td style="padding:4px 8px 4px 8px;text-align:center;">Shipping</td>
+      <td style="padding:4px 8px 4px 8px;text-align:center;">Net Price</td>
+    </tr>
+    <tr style="color: #652803; font-size:14px;">
+      <td style="padding:5px 0 2px 0;"><%= @order.first_name %></td>
+      <td style="text-align:center;"><%= @order.last_name %></td>
+      <td style="text-align:center;"><%= @order.email %></td>
+      <td style="text-align:center;"><%= @order.address1 %></td>
+      <td style="text-align:center;"><%= @order.address2 %></td>
+      <td style="text-align:center;"><%= @order.city %></td>
+      <td style="text-align:center;"><%= @order.state %></td>
+      <td style="text-align:center;"><%= @order.zip_code %></td>
+      <td style="text-align:center;"><% if !@order.sale_tax.blank? %>
+          <%= @order.sale_tax %> %
+        <%else%>
+          0.0 %
+      <%end%></td>
+      <td style="text-align:center;">
+        <% if !@order.shipping_charge.blank? %>
+          $<%= @order.shipping_charge %></td>
+      <%else%>
+        $ 0.0
+      <%end%>
+      <td style="text-align:center;">$<%= @order.net_price %></td>
+    </tr>
+  </table>
+
+</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div style="padding-left:100px;font-size:14px;color:#652803;word-wrap:break-word;width:160px;"><%= flash[:notice] %></div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div style="padding-left: 50px;">
+  <% if RAILS_ENV == 'production' %>
+
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_cart" />
+      <input type="hidden" name="upload" value="1" />
+      <input type="hidden" name="business" value="integrate.web@gmail.com" />
+      <% i = 1 %>
+      <% for item in @order.lineitems %>
+        <input type="hidden" name="item_number_<%= i %>" value="<%= item.item_no %>" />
+        <input type="hidden" name="item_name_<%= i %>" value="<%= item.book.name %>" />
+        <input type="hidden" name="amount_<%= i %>" value="<%= item.price %>" />
+        <input type="hidden" name="quantity_<%= i %>" value="<%= item.quantity %>" />
+        <% if @order.shipping == 'yes' %>
+          <input type="hidden" name="shipping_<%= i %>" value="<%= item.quantity * 6 %>" />
+        <% end %>
+        <% if @order.state == 'CA' %>
+          <input type="hidden" name="tax_rate_<%= i %>" value="8.25" />
+        <% end %>
+        <% i = i + 1 %>
+      <% end %>
+      <% if @order.shipping == 'yes' %>
+        <input type="hidden" name="first_name" value="<%= @order.first_name %>" />
+        <input type="hidden" name="last_name" value="<%= @order.last_name %>" />
+        <input type="hidden" name="email" value="<%= @order.email %>" />
+        <input type="hidden" name="address1" value="<%= @order.address1 %>" />
+        <input type="hidden" name="address2" value="<%= @order.address2 %>" />
+        <input type="hidden" name="city" value="<%= @order.city %>" />
+        <input type="hidden" name="state" value="<%= @order.state %>" />
+        <input type="hidden" name="country" value="US" />
+        <input type="hidden" name="zip" value="<%= @order.zip_code %>" />
+      <% end %>
+      <input type="hidden" name="return" value="<%= @return_url %>"/>
+      <input type="hidden" name="rm" value="2"/>
+      <input type="hidden" name="cancel_return" value="<%= @cancel_url %>"/>
+      <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
+      <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+    </form>
+
+  <% else %>
+
+    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_cart" />
+      <input type="hidden" name="upload" value="1" />
+      <input type="hidden" name="business" value="jks_1315976898_biz@circarconsulting.com" />
+      <% i = 1 %>
+      <% for orderitem in @order.lineitems %>
+        <input type="hidden" name="item_number_<%= i %>" value="<%= orderitem.item_no %>" />
+        <input type="hidden" name="item_name_<%= i %>" value="<%= orderitem.item.title %>" />
+        <input type="hidden" name="amount_<%= i %>" value="<%= orderitem.price %>" />
+        <input type="hidden" name="quantity_<%= i %>" value="<%= orderitem.quantity %>" />
+        <% if @order.shipping == 'yes' %>
+          <input type="hidden" name="shipping_<%= i %>" value="<%= orderitem.quantity * 6.to_i %>" />
+        <% end %>
+        <% if @order.state == 'CA' %>
+          <input type="hidden" name="tax_rate_<%= i %>" value="8.25" />
+        <% end %>
+        <% i = i + 1 %>
+      <% end %>
+      <% if @order.shipping == 'yes' %>
+        <input type="hidden" name="first_name" value="<%= @order.first_name %>" />
+        <input type="hidden" name="last_name" value="<%= @order.last_name %>" />
+        <input type="hidden" name="email" value="<%= @order.email %>" />
+        <input type="hidden" name="address1" value="<%= @order.address1 %>" />
+        <input type="hidden" name="address2" value="<%= @order.address2 %>" />
+        <input type="hidden" name="city" value="<%= @order.city %>" />
+        <input type="hidden" name="state" value="<%= @order.state %>" />
+        <input type="hidden" name="country" value="US" />
+        <input type="hidden" name="zip" value="<%= @order.zip_code %>" />
+      <% end %>
+      <input type="hidden" name="return" value="<%= @return_url %>"/>
+      <input type="hidden" name="rm" value="2"/>
+      <input type="hidden" name="cancel_return" value="<%= @cancel_url %>"/>
+      <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
+      <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+    </form>
+
+  <% end %>
+</div>
