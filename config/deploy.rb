@@ -2,11 +2,11 @@ set :application, "mystore"
 set :domain, "68.195.138.40"
 set :user, "ezwebgur"
 set :password, "xsw23edc"
-set :scm_username, "circar"
+set :scm_username, "gourab"
 set :rails_env, "production"
 set :scm, :git
 set :repository, "git@github.com:gourab/mystore.git"
-set :deploy_to, "/home/tyt2007/rails_app/#{application}"
+set :deploy_to, "/home/ezwebgur/apps/#{application}"
 set :use_sudo, false
 set :chmod755, "app config db lib vendor script script/*"
 #set :chmod755, "app config db lib public vendor script script/* public/disp*"
@@ -33,11 +33,11 @@ namespace :deploy do
   end
 end
 after :deploy, "deploy:restart"
-after "deploy:symlink", "deploy:update_crontab"
-namespace :deploy do
-  desc "Update the crontab file"
-  task :update_crontab, :roles => :db do
-    run "cd #{release_path} && whenever --update-crontab #{application} --set environment=#{rails_env}"
-  end
-end
+after "deploy:symlink"#, "deploy:update_crontab"
+#namespace :deploy do
+#  desc "Update the crontab file"
+#  task :update_crontab, :roles => :db do
+#    run "cd #{release_path} && whenever --update-crontab #{application} --set environment=#{rails_env}"
+#  end
+#end
 
