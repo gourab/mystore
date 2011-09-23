@@ -29,7 +29,7 @@ test: &test
   socket: /var/run/mysqld/mysqld.sock
 
 production:
-  adapter: mysql2
+  adapter: mysql
   encoding: utf8
   reconnect: false
   database: mystore_production
