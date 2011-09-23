@@ -12,6 +12,11 @@ class CreateStores < ActiveRecord::Migration
       t.column :zip,                     :string, :limit => 40
       t.column :phone,                     :string, :limit => 40
       t.column :user_id,                     :string, :limit => 40
+      t.column :avatar_file_name,            :string
+      t.column :avatar_content_type,            :string
+      t.column :avatar_file_size,            :integer
+      t.column :avatar_updated_at,            :datetime
+      t.column :avatar_meta,            :text
       t.timestamps
     end
   end

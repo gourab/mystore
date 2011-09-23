@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     if success && @user.errors.empty?
       
       @user.create_store(params[:store])
-       @store=Store.find(:first, :conditions => ["user_id =?", @user.id])
+#       @store=Store.find(:first, :conditions => ["user_id =?", @user.id])
 #       process_file_uploads(@store)
       @url_notification = url_for(:controller => 'users', :action => 'activate', :activation_code => @user.activation_code)
       UserMailer.signup_notification(@user, @url_notification).deliver

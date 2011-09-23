@@ -1,7 +1,7 @@
 <%#= javascript_include_tag  "multifile" %>
 <div class="main_wrap">
   <div style="padding: 10px 0 0 50px;">
-    <% form_tag users_path  do %>
+    <% form_tag users_path, :multipart => true  do %>
 
       <table>
         <tr>
@@ -82,7 +82,11 @@
             </select></td>
 
         </tr>
-    
+      <tr>
+          <td> <%= label_tag 'Logo' %></td>
+          <td> <%= file_field :store, :avatar %></td>
+
+        </tr>
       </table>
       <div>
         <%= submit_tag 'create' %>

@@ -3,7 +3,7 @@
 <div class="FL" style="width:765px;">
    <% @charities.each do |club| %>
   <div style="margin-left:20px;">
-    <div class="FL list_text" style="width:150px;">(Logo)</div>
+    <div class="FL list_text" style="width:150px;"><%= image_tag Store.find(:first, :conditions => ["user_id=?",club.user_id]).avatar.url(:thumb)  %></div>
     <div class="FL list_text" style="width:150px;"><%=  club.organizationname  %></div>
     <div class="FL list_text" style="width:150px;"><%= club.sport %></div>
     <div class="FL list_text" style="width:150px;"><%= club.state  %></div>

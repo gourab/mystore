@@ -6,6 +6,6 @@ production:
   reconnect: false
   database: mystore_production
   pool: 5
-  username: root
-  password:
+  username: sidelineswap_dev
+  password: sidelineswap_dev
   socket: /var/run/mysqld/mysqld.sock

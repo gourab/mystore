@@ -71,17 +71,22 @@ ActiveRecord::Schema.define(:version => 20110914061826) do
   end
 
   create_table "stores", :force => true do |t|
-    t.string   "firstname",        :limit => 40
-    t.string   "lastname",         :limit => 40
-    t.string   "organizationname", :limit => 40
-    t.string   "email",            :limit => 40
-    t.string   "address1",         :limit => 40
-    t.string   "address2",         :limit => 40
-    t.string   "city",             :limit => 40
-    t.string   "state",            :limit => 40
-    t.string   "zip",              :limit => 40
-    t.string   "phone",            :limit => 40
-    t.string   "user_id",          :limit => 40
+    t.string   "firstname",           :limit => 40
+    t.string   "lastname",            :limit => 40
+    t.string   "organizationname",    :limit => 40
+    t.string   "email",               :limit => 40
+    t.string   "address1",            :limit => 40
+    t.string   "address2",            :limit => 40
+    t.string   "city",                :limit => 40
+    t.string   "state",               :limit => 40
+    t.string   "zip",                 :limit => 40
+    t.string   "phone",               :limit => 40
+    t.string   "user_id",             :limit => 40
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.text     "avatar_meta"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "sport"
