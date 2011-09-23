@@ -11,8 +11,8 @@ development:
   reconnect: false
   database: mystore_development
   pool: 5
-  username: sidelineswap_dev
-  password: sidelineswap_dev
+  username: root
+  password: 
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -24,8 +24,8 @@ test: &test
   reconnect: false
   database: mystore_test
   pool: 5
-  username: sidelineswap_dev
-  password: sidelineswap_dev
+  username: root
+  password: 
   socket: /var/run/mysqld/mysqld.sock
 
 production:
@@ -34,8 +34,8 @@ production:
   reconnect: false
   database: mystore_production
   pool: 5
-  username: root
-  password:
+  username: sidelineswap_dev
+  password: sidelineswap_dev
   socket: /var/run/mysqld/mysqld.sock
 
 cucumber:
