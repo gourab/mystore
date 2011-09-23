@@ -29,7 +29,7 @@ namespace :deploy do
   task :restart, :roles => :app do
     run "cp #{current_path}/config/example.database.yml #{current_path}/config/database.yml"
     run "cd #{current_path} && chmod 755 #{chmod755}"
-    run "cd #{current_path} && bundle install --path vendor/bundle"
+#    run "cd #{current_path} && bundle install --path vendor/bundle"
     run "touch #{current_path}/tmp/restart.txt"
   end
 end
