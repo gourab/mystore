@@ -1,11 +1,8 @@
-## YAML Template.
----
 production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: mystore_production
+  database: mystore_dev
   pool: 5
   username: root
   password: pAwegeSwA8
-#  socket: /var/run/mysqld/mysqld.sock
