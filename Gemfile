@@ -7,7 +7,7 @@ gem 'rails', '3.0.10'
 
 gem 'mysql2', '~> 0.2.11'
 gem "paperclip", "~> 2.3"
-gem 'rake', "0.9.2"
+gem 'rake', "0.8.7"
 #group :test, :development do
 
 #gem 'rspec-rails'
