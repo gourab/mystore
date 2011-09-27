@@ -32,11 +32,11 @@ production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: mystore_production
+  database: mystore_dev
   pool: 5
-  username: sidelineswap_dev
-  password: sidelineswap_dev
-  socket: /var/run/mysqld/mysqld.sock
+  username: root
+  password: pAwegeSwA8
+#  socket: /var/run/mysqld/mysqld.sock
 
 cucumber:
   <<: *test
