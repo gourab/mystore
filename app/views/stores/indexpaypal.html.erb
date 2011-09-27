@@ -82,15 +82,15 @@
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
       <input type="hidden" name="cmd" value="_cart" />
       <input type="hidden" name="upload" value="1" />
-      <input type="hidden" name="business" value="integrate.web@gmail.com" />
+      <input type="hidden" name="business" value="sidelineswap@gmail.com" />
       <% i = 1 %>
-      <% for item in @order.lineitems %>
-        <input type="hidden" name="item_number_<%= i %>" value="<%= item.item_no %>" />
-        <input type="hidden" name="item_name_<%= i %>" value="<%= item.book.name %>" />
-        <input type="hidden" name="amount_<%= i %>" value="<%= item.price %>" />
-        <input type="hidden" name="quantity_<%= i %>" value="<%= item.quantity %>" />
+      <% for item1 in @order.lineitems %>
+        <input type="hidden" name="item_number_<%= i %>" value="<%= item1.item_no %>" />
+        <input type="hidden" name="item_name_<%= i %>" value="<%= item1.item.title %>" />
+        <input type="hidden" name="amount_<%= i %>" value="<%= item1.price %>" />
+        <input type="hidden" name="quantity_<%= i %>" value="<%= item1.quantity %>" />
         <% if @order.shipping == 'yes' %>
-          <input type="hidden" name="shipping_<%= i %>" value="<%= item.quantity * 6 %>" />
+          <input type="hidden" name="shipping_<%= i %>" value="<%= item1.quantity * 6 %>" />
         <% end %>
         <% if @order.state == 'CA' %>
           <input type="hidden" name="tax_rate_<%= i %>" value="8.25" />
