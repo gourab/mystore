@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
         logout_killing_session!
         redirect_back_or_default('/login', :notice => "You must contact with administrator.")
       elsif user.user_type=="STORE" && user.login!="admin" && user.status==true
-        redirect_to stores_path
+        redirect_to root_path
       else
         redirect_to stores_path
       end
