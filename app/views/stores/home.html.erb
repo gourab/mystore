@@ -14,7 +14,7 @@
           <% item.assets.each do |asset| %>
 
             <% if temp_item!=item.title %>
-              <li> <%= image_tag asset.data.url,:size => "138x152"   %>
+              <li> <%= image_tag asset.url,:size => "138x152"   %>
 
                 <h3><%= item.title   %></h3>
                 <div><%= link_to  Store.find(item.store_id).organizationname , show_store_item_path(:id=>item.store_id )   %></div>
