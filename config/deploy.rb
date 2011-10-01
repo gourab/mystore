@@ -8,7 +8,7 @@ set :scm, :git
 set :repository, "git@github.com:gourab/mystore.git"
 set :deploy_to, "/home/ezwebgur/apps/#{application}"
 set :use_sudo, false
-set :chmod755, "app config db lib vendor public script script/*"
+set :chmod755, "app config db lib vendor public assets script script/*"
 #set :chmod755, "app config db lib public vendor script script/* public/disp*"
 set :keep_releases, "5" # number of deployed releases to keep
 # If you aren't deploying to /u/apps/#{application} on the target
