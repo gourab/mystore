@@ -1,7 +1,7 @@
 class Asset < ActiveRecord::Base
- has_attached_file  :data
-#                    :url  => "/assets/:id",
-#                    :path => ":rails_root/assets/docs/:id/:style/:basename.:extension"
+ has_attached_file  :data,
+                    :url  => "/assets/:id",
+                    :path => ":rails_root/assets/docs/:id/:style/:basename.:extension"
 
 
   belongs_to :attachable, :polymorphic => true
