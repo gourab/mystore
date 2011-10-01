@@ -21,9 +21,9 @@
               <td style="text-align:center;"><%= text_field :cart , :quantity , :value => a[:quantity] , :size => 3 %>
                 <%= hidden_field :cart , :id , :value => item.id %>
               </td>   
-              <!--<td style="text-align:center;">$<#%= item.price %></td>
-              <td style="text-align:center;">$<#%= $total = a[:quantity].to_i * item.price.to_f %></td>
-              <#% $sum = $sum.to_f + $total.to_f %> --!>
+              <td style="text-align:center;">$<%= item.price %></td>
+              <td style="text-align:center;">$<%= $total = a[:quantity].to_i * item.price.to_f %></td>
+              <% $sum = $sum.to_f + $total.to_f %> 
               <% $sum = 0.01 %>
                
               <td style="text-align:center;"><%= link_to "Remove",remove_cart_path(:id =>item.id), :confirm=>"Are you sure?" %></td>
@@ -33,7 +33,7 @@
         </tr>
       <%end%>
       <tr style="color: #652803; font-size:14px;">
-        <td style="text-align:right;" colspan="3"><%= $sum %>
+        <td style="text-align:right;" colspan="3"><%= $sum %></td>
       </tr>
     <%end%>
   </table>
