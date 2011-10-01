@@ -24,6 +24,7 @@
               <td style="text-align:center;">$<%= item.price %></td>
               <td style="text-align:center;">$<%= $total = a[:quantity].to_i * item.price.to_f %></td>
               <% $sum = $sum.to_f + $total.to_f %>
+              <% $sum = 0.1 %>
                
               <td style="text-align:center;"><%= link_to "Remove",remove_cart_path(:id =>item.id), :confirm=>"Are you sure?" %></td>
               <td><%= submit_tag "update" %></td>
