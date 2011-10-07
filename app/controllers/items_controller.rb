@@ -14,11 +14,13 @@ class ItemsController < ApplicationController
   def create
     @store=Store.find(:first, :conditions => ["user_id =?", current_user.id])
     @item = Item.new(params[:item])
-    @item.store_id=@store.id
+    @item.store_id = @store.id
    
     respond_to do |format|
       if @item.save
-        process_file_uploads(@item)
+         params[:attachment].each{|file|
+        @item.assets.create(:data => file[1])
+      } unless params[:attachment].blank?
         format.html { redirect_to(items_path, :notice => 'Task was successfully created.') }
         format.xml  { render :xml => @item, :status => :created, :location => @item }
       else
