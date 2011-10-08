@@ -18,7 +18,7 @@
           <td style="text-align:center;">$<%= lineitem.price %></td>
           <td style="text-align:center;">$<%= $total = lineitem.quantity.to_i * lineitem.price.to_f %></td>
           <% $sum = $sum.to_f + $total.to_f %>
-          <% $sum = 0.01 %>
+          <%# $sum = 0.01 %>
         </tr>
       <%end%>
     <%end%>
