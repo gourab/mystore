@@ -18,9 +18,9 @@ class ItemsController < ApplicationController
    
     respond_to do |format|
       if @item.save
-         params[:attachment].each{|file|
-        @item.assets.create(:data => file[1])
-      } unless params[:attachment].blank?
+        params[:attachment].each{|file|
+          @item.assets.create(:data => file[1])
+        } unless params[:attachment].blank?
         format.html { redirect_to(items_path, :notice => 'Task was successfully created.') }
         format.xml  { render :xml => @item, :status => :created, :location => @item }
       else
@@ -28,6 +28,25 @@ class ItemsController < ApplicationController
         format.xml  { render :xml => @item.errors, :status => :unprocessable_entity }
       end
     end
+  end
+  def edit
+    @item =Item.find(params[:id])
+  end
+
+  def update
+    @item =Item.find(params[:id])
+    if @item.update_attributes(params[:item])
+      redirect_to items_path
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to root_path
+
   end
 
   protected

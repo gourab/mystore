@@ -1,6 +1,7 @@
+
 <%= javascript_include_tag  "multifile" %>
 
-<% form_for(@item,:html => { :multipart => true } ) do |f| %>
+<% form_for(@item, :url => items_path, :html => { :multipart => true } ) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -53,7 +54,9 @@
 
   </div>
 
+
   <div class="actions">
-    <%= f.submit %>
+    <div  class="create_new_item" ><%= f.submit '', :class=>"create_new_item_img" %></div>
+
   </div>
 <% end %>

@@ -141,6 +141,7 @@ h3{
     margin-right: 20px;
     padding: 10px;
     width: 140px ;
+    word-wrap:break-word;
 }
 .listing ul li h6 {
     float: left;
@@ -166,6 +167,12 @@ h6 a{
 a {
     outline: medium none;
     text-decoration: none;
+    font:normal 12px/18px verdana;
+    color: #006699;
+}
+a:hover {
+    text-decoration: underline;
+    color: #006699;
 }
 a img {
     border: medium none;
@@ -294,6 +301,48 @@ textarea.LV_invalid_field:active {
 
 
 }
+.create_new{
+    margin:10px 0 0 150px;
+    background:url(../images/im_02.png) no-repeat 0 0;
+    height:30px;
+    /* padding-top:5px;*/
+}
+.create_new_item{
+    margin:10px 0 0 50px;
+    background:url(../images/im_01.png) no-repeat 0 0;
+    height:30px;
+    /* padding-top:5px;*/
+}
+.edit_new_item{
+    margin:10px 0 0 150px;
+    background:url(../images/im_07.png) no-repeat 0 0;
+    height:30px;
+    /*padding-top:5px;*/
+}
+.add_to_cart{
+    margin:10px 0 0 50px;
+    background:url(../images/im_06.png) no-repeat 0 0;
+    height:30px;
+    /*padding-top:5px;*/
+}
+.remove_cart{
+    margin:10px 0 0 50px;
+    background:url(../images/im_03.png) no-repeat 0 0;
+    height:30px;
+    /*padding-top:5px;*/
+}
+.update_cart{
+    margin:10px 0 0 50px;
+    background:url(../images/im_04.png) no-repeat 0 0;
+    height:30px;
+    /*padding-top:5px;*/
+}
+.update_item{
+    margin:10px 0 0 50px;
+    background:url(../images/update_item.png) no-repeat 0 0;
+    height:30px;
+    /*padding-top:5px;*/
+}
 .log_but a{
     font: bold 14px/16px "Verdana", Geneva, sans-serif;
     color:#FFF;
@@ -313,7 +362,96 @@ textarea.LV_invalid_field:active {
     padding-left: 10px;
 
 }
-
+.create_img{
+    background: none;
+    border: none;
+    outline: none;
+    font: bold 14px/16px "Verdana", Geneva, sans-serif;
+    color:#FFF;
+    /*padding-left: 10px;*/
+    width: 125px;
+    height:30px;
+}
+.create_new_img{
+    background: none;
+    border: none;
+    outline: none;
+    font: bold 14px/16px "Verdana", Geneva, sans-serif;
+    color:#FFF;
+    /* padding-left: 10px;*/
+    width: 125px;
+    height:30px;
+}
+.create_new_img{
+    background: none;
+    border: none;
+    outline: none;
+    font: bold 14px/16px "Verdana", Geneva, sans-serif;
+    color:#FFF;
+    /*padding-left: 10px;*/
+    width: 125px;
+    height:30px;
+}
+.edit_new_img{
+    background: none;
+    border: none;
+    outline: none;
+    font: bold 14px/16px "Verdana", Geneva, sans-serif;
+    color:#FFF;
+    /*padding-left: 10px;*/
+    width: 125px;
+    height:30px;
+}
+.add_to_cart_img{
+    background: none;
+    border: none;
+    outline: none;
+    font: bold 14px/16px "Verdana", Geneva, sans-serif;
+    color:#FFF;
+    /*padding-left: 10px;*/
+    width: 125px;
+    height:30px;
+}
+.remove_cart_img{
+    background: none;
+    border: none;
+    outline: none;
+    font: bold 14px/16px "Verdana", Geneva, sans-serif;
+    color:#FFF;
+    /*padding-left: 10px;*/
+    width: 125px;
+    height:30px;
+}
+.update_cart_img{
+    background: none;
+    border: none;
+    outline: none;
+    font: bold 14px/16px "Verdana", Geneva, sans-serif;
+    color:#FFF;
+    /*padding-left: 10px;*/
+    width: 125px;
+    height:30px;
+}
+.update_item_img{
+    background: none;
+    border: none;
+    outline: none;
+    font: bold 14px/16px "Verdana", Geneva, sans-serif;
+    color:#FFF;
+    /*padding-left: 10px;*/
+    width: 125px;
+    height:30px;
+}
+.create_new_item_img{
+    background: none;
+    border: none;
+    outline: none;
+    font: bold 5px/7px "Verdana", Geneva, sans-serif;
+    color:#FFF;
+    /*padding-left: 10px;*/
+    width: 125px;
+    height:30px;
+}
 .list_text{
     font: bold 14px/16px "Verdana", Geneva, sans-serif;
     color:#666;
