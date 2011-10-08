@@ -1,29 +1,32 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <b>Title:</b>
-  <%=  @item.title %>
-</p>
+<div class="main_wrap">
+  <div style="padding-left: 50px;">
+    <p id="notice"><%= notice %></p>
+    <p>
+      <b>Title:</b>
+      <%=  @item.title %>
+    </p>
 
-<p>
-  <b>price:</b>
-  <%=  @item.price %>
-</p>
-<p>
-  <b>quantity:</b>
-  <%=  @item.quantity %>
-</p>
-<p>
-  <b>size:</b>
-  <%=  @item.size %>
-</p>
-<p>
-  <b>description:</b>
-  <%=  @item.description %>
-</p>
-<p>
-  <b>shipping price:</b>
-  <%=  @item.shippingprice %>
-</p>
-<p><b>Attached Files:</b><div id="attachment_list"><%= render :partial => "attachment", :collection => @item.assets %></div></p>
+    <p>
+      <b>price:</b>
+      <%=  @item.price %>
+    </p>
+    <p>
+      <b>quantity:</b>
+      <%=  @item.quantity %>
+    </p>
+    <p>
+      <b>size:</b>
+      <%=  @item.size %>
+    </p>
+    <p>
+      <b>description:</b>
+      <%=  @item.description %>
+    </p>
+    <p>
+      <b>shipping price:</b>
+      <%=  @item.shippingprice %>
+    </p>
+    <p><b>Attached Files:</b><div id="attachment_list"><%= render :partial => "attachment", :collection => @item.assets %></div></p>
 <%#= link_to 'Back', items_path %>
-
+  </div>
+</div>
